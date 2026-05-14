@@ -1,0 +1,25 @@
+<mujoco model="g1_scene">
+  <include file="unitree_mujoco/unitree_robots/g1/g1_29dof.xml"/>
+
+  <statistic center="0 0 0.8" extent="2"/>
+
+  <visual>
+    <headlight ambient="0.6 0.6 0.6" diffuse="0.8 0.8 0.8" specular="0.2 0.2 0.2"/>
+    <global offwidth="640" offheight="480"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0.05 0.05 0.1" width="512" height="512"/>
+    <texture type="2d" name="ground" builtin="checker" mark="edge" rgb1="0.25 0.25 0.35" rgb2="0.15 0.15 0.25" markrgb="0.5 0.5 0.5" width="300" height="300"/>
+    <material name="ground" texture="ground" texuniform="true" texrepeat="3 3" reflectance="0.1"/>
+  </asset>
+
+  <worldbody>
+    <!-- Single light from top-right corner -->
+    <light name="key" pos="4 4 4" dir="-4 -4 -4" diffuse="1.0 1.0 1.0" specular="0.5 0.5 0.5"/>
+    <camera name="front" pos="2 0 1.2" xyaxes="0 1 0 0 0 1"/>
+    <camera name="side" pos="0 -2 1.2" xyaxes="1 0 0 0 0 1"/>
+    <camera name="diag" pos="1.5 -1.5 1.5" xyaxes="0.707 -0.707 0 -0.354 0.354 0.866"/>
+    <geom name="floor" size="0 0 0.05" type="plane" material="ground"/>
+  </worldbody>
+</mujoco>
